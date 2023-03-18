@@ -1,0 +1,3 @@
+issue001-human-v-human-java-console:
+  Create the Java console version of TicTacToe where
+  two human players can play each other.[DONE]
