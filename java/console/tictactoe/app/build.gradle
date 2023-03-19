@@ -27,7 +27,14 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'sv.tictactoe.App'
+    mainClass = 'sv.tictactoe.TicTacToeApp'
+}
+
+jar {
+    manifest {
+        attributes('Main-Class': 'sv.tictactoe.TicTacToeApp')
+    }
+    archivesBaseName = 'tictactoe'
 }
 
 tasks {
