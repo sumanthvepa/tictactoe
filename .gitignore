@@ -1,2 +1,6 @@
 # Ignore the commit message file
 msg
+
+
+# Ignore macOS artifacts
+.DS_Store

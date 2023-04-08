@@ -1,0 +1,6 @@
+# This is a comment
+--name tictactoe
+--app-version 1.0
+--input app/build/libs
+--main-jar tictactoe.jar
+--dest app/build/libs
