@@ -18,8 +18,9 @@ public class Game {
     return (currentPlayer == noughts)? Board.Symbol.NOUGHT : Board.Symbol.CROSS;
   }
 
-  private void declareResult() {
-    if (analytics.hasWon(board, Board.Symbol.NOUGHT)) io.declareWinner(board, Board.Symbol.NOUGHT, noughts);
+  private void declareResult(GameIO.AbnormalTerminationException abnormalTermination) {
+    if (analytics.playerResigned(abnormalTermination)) io.declareResignation(board, playerSymbol(), currentPlayer, abnormalTermination);
+    else if (analytics.hasWon(board, Board.Symbol.NOUGHT)) io.declareWinner(board, Board.Symbol.NOUGHT, noughts);
     else if (analytics.hasWon(board, Board.Symbol.CROSS)) io.declareWinner(board, Board.Symbol.CROSS, crosses);
     else io.declareDraw(board);
   }
@@ -34,9 +35,12 @@ public class Game {
   }
 
   public void play() {
-    while (!analytics.isGameOver(board))
-      nextPlayer().makeMove(board, playerSymbol());
-    declareResult();
+    GameIO.AbnormalTerminationException abnormalTermination = null;
+    try {
+      while (!analytics.isGameOver(board))
+        nextPlayer().makeMove(board, playerSymbol());
+    } catch (GameIO.AbnormalTerminationException ex) { abnormalTermination = ex; }
+    declareResult(abnormalTermination);
   }
 
   public static @NotNull Game make() {

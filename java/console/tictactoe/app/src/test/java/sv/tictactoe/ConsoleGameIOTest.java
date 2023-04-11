@@ -10,7 +10,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ConsoleGameIOTest {
-  @Test void checkGetPosition() throws Board.InvalidPositionException {
+  @Test void checkGetPosition() throws Board.InvalidPositionException, GameIO.AbnormalTerminationException {
     var lineSeparator = System.getProperty("line.separator");
     var input = "top-left" + lineSeparator
         + "top-middle" + lineSeparator
@@ -28,6 +28,7 @@ public class ConsoleGameIOTest {
         + lineSeparator + "Choose a position: "
         + String.join(
             ", ", Arrays.stream(Board.Position.values()).map((element) -> element.label).toArray(String[]::new))
+        + lineSeparator + "Type 'resign' to resign; or, 'exit' to end the game immediately."
         + lineSeparator + "Enter choice: ";
     var actualOutput = baos.toString();
     assertEquals(expectedOutput, actualOutput);

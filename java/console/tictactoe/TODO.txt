@@ -1,3 +1,5 @@
+issue002-human-v-human-java-console-support-resign-and-exit:
+  Support resigning and exiting the game.[DONE]
 issue001-human-v-human-java-console:
   Create the Java console version of TicTacToe where
   two human players can play each other.[DONE]

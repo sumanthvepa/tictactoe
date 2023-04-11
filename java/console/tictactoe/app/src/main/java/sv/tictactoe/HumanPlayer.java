@@ -8,7 +8,7 @@ public class HumanPlayer implements Player {
   public HumanPlayer(@NotNull GameIO io) { this.io = io; }
 
   @Override
-  public void makeMove(Board board, Board.Symbol symbol) {
+  public void makeMove(Board board, Board.Symbol symbol) throws GameIO.AbnormalTerminationException {
     try {
       board.placeMark(io.getPosition(board), symbol);
     } catch(Board.InvalidPositionException ex) {

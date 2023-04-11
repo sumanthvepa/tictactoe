@@ -1,5 +1,5 @@
 package sv.tictactoe;
 
 public interface Player {
-  void makeMove(Board board, Board.Symbol symbol);
+  void makeMove(Board board, Board.Symbol symbol) throws GameIO.AbnormalTerminationException;
 }

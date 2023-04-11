@@ -19,17 +19,24 @@ public class ConsoleGameIO implements GameIO{
         + Arrays.stream(allowedPositions).map(position -> position.label)
         .reduce("",(allowedPositionsString, positionLabel)
             -> (allowedPositionsString.length() > 0)?
-            allowedPositionsString + ", " + positionLabel : positionLabel) + lineSeparator + "Enter choice: ";
+            allowedPositionsString + ", " + positionLabel : positionLabel) + lineSeparator
+        + "Type 'resign' to resign; or, 'exit' to end the game immediately." + lineSeparator
+        + "Enter choice: ";
   }
 
-  private @NotNull String getInput() { return ss.nextLine(); }
+  private @NotNull String getInput() throws AbnormalTerminationException {
+    var input = ss.nextLine();
+    if (input.equals("resign")) throw new PlayerResignedException();
+    if (input.equals("exit")) throw new PlayerExitedException();
+    return input;
+  }
 
   public ConsoleGameIO(@NotNull InputStream is, @NotNull PrintStream os) {
     this.os = os;
     this.ss = new Scanner(is);
   }
 
-  @Override public @NotNull Board.Position getPosition(@NotNull Board board) {
+  @Override public @NotNull Board.Position getPosition(@NotNull Board board) throws AbnormalTerminationException {
     os.println(displayBoard(board));
     while (true) {
       try {
@@ -42,6 +49,11 @@ public class ConsoleGameIO implements GameIO{
   @Override public void declareWinner(@NotNull Board board, @NotNull Board.Symbol symbol, @NotNull Player player) {
     os.println(board);
     os.println("Player " + symbol.label + " has won!");
+  }
+
+  @Override public void declareResignation(@NotNull Board board, @NotNull Board.Symbol symbol, @NotNull Player currentPlayer, AbnormalTerminationException ex) {
+    os.println(board);
+    os.println("Player " + symbol.label + " " + ex.getMessage());
   }
 
   @Override public void declareDraw(@NotNull Board board) {
