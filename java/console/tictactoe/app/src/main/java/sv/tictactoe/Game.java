@@ -19,7 +19,7 @@ public class Game {
   }
 
   private void declareResult(GameIO.AbnormalTerminationException abnormalTermination) {
-    if (analytics.playerResigned(abnormalTermination)) io.declareResignation(board, playerSymbol(), currentPlayer, abnormalTermination);
+    if (abnormalTermination != null) io.declareAbnormalTermination(board, playerSymbol(), currentPlayer, abnormalTermination);
     else if (analytics.hasWon(board, Board.Symbol.NOUGHT)) io.declareWinner(board, Board.Symbol.NOUGHT, noughts);
     else if (analytics.hasWon(board, Board.Symbol.CROSS)) io.declareWinner(board, Board.Symbol.CROSS, crosses);
     else io.declareDraw(board);

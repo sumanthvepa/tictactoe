@@ -20,14 +20,14 @@ public class ConsoleGameIO implements GameIO{
         .reduce("",(allowedPositionsString, positionLabel)
             -> (allowedPositionsString.length() > 0)?
             allowedPositionsString + ", " + positionLabel : positionLabel) + lineSeparator
-        + "Type 'resign' to resign; or, 'exit' to end the game immediately." + lineSeparator
+        + "Type 'resign' to resign; or, 'exit' or 'quit' to end the game immediately." + lineSeparator
         + "Enter choice: ";
   }
 
   private @NotNull String getInput() throws AbnormalTerminationException {
     var input = ss.nextLine();
     if (input.equals("resign")) throw new PlayerResignedException();
-    if (input.equals("exit")) throw new PlayerExitedException();
+    if (input.equals("exit") || input.equals("quit")) throw new PlayerQuitException();
     return input;
   }
 
@@ -51,14 +51,15 @@ public class ConsoleGameIO implements GameIO{
     os.println("Player " + symbol.label + " has won!");
   }
 
-  @Override public void declareResignation(@NotNull Board board, @NotNull Board.Symbol symbol, @NotNull Player currentPlayer, AbnormalTerminationException ex) {
-    os.println(board);
-    os.println("Player " + symbol.label + " " + ex.getMessage());
-  }
-
   @Override public void declareDraw(@NotNull Board board) {
     os.println(board);
     os.println("It's a draw.");
+  }
+
+  @Override public void declareAbnormalTermination(@NotNull Board board, @NotNull Board.Symbol symbol, @NotNull Player currentPlayer, @NotNull AbnormalTerminationException ex)
+  {
+    os.println(board);
+    os.println("Player " + symbol.label + " " + ex.getMessage());
   }
 
   @Override

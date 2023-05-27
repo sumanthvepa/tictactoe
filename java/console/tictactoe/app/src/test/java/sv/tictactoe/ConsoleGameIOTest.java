@@ -28,7 +28,7 @@ public class ConsoleGameIOTest {
         + lineSeparator + "Choose a position: "
         + String.join(
             ", ", Arrays.stream(Board.Position.values()).map((element) -> element.label).toArray(String[]::new))
-        + lineSeparator + "Type 'resign' to resign; or, 'exit' to end the game immediately."
+        + lineSeparator + "Type 'resign' to resign; or, 'exit' or 'quit' to end the game immediately."
         + lineSeparator + "Enter choice: ";
     var actualOutput = baos.toString();
     assertEquals(expectedOutput, actualOutput);

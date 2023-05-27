@@ -27,8 +27,4 @@ public class GameAnalytics {
     if (hasWon(board, Board.Symbol.CROSS)) return Board.Symbol.CROSS;
     return null;
   }
-
-  public boolean playerResigned(GameIO.AbnormalTerminationException abnormalTermination) {
-    return abnormalTermination != null;
-  }
 }
