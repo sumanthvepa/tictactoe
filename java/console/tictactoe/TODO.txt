@@ -1,3 +1,5 @@
+issue003-human-v-human-java-console-upgrade-to-gradle-8.1.1:
+  Upgrade to gradle version 8.1.1
 issue002-human-v-human-java-console-support-resign-and-exit:
   Support resigning and exiting the game.[DONE]
 issue001-human-v-human-java-console:

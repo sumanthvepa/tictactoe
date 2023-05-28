@@ -4,13 +4,12 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$PROJECT_DIR$/../../../../../../../../Gradle/gradle-8.0.2" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/app" />
+            <option value="/workspaces/svepa/tictactoe/java/console/tictactoe" />
+            <option value="/workspaces/svepa/tictactoe/java/console/tictactoe/app" />
           </set>
         </option>
       </GradleProjectSettings>
