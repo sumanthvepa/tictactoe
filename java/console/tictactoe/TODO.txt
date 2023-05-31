@@ -1,3 +1,5 @@
+issue004-human-v-human-java-console-make-project-portable:
+  Make the project potable across all active development machines
 issue003-human-v-human-java-console-upgrade-to-gradle-8.1.1:
   Upgrade to gradle version 8.1.1
 issue002-human-v-human-java-console-support-resign-and-exit:
