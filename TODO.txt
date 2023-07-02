@@ -1,3 +1,6 @@
+issue005-human-v-human-swift-console
+  Create a Swift console version of TicTacToe where two human players
+  can play each other
 issue004-human-v-human-java-console-make-project-portable:
   Make the project potable across all active development machines
 issue003-human-v-human-java-console-upgrade-to-gradle-8.1.1:
