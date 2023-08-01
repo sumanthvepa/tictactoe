@@ -16,3 +16,7 @@ But it is open for anyone to use and benefit.
 ### Java Running on the Console
 This version is located in java/console/tictactoe.It is a
 command-line app that allows two humans to play tictactoe.
+
+### Swift Running on a macOS Console
+This version is located in swift/macos/console/tictactoe. It is a
+command-line app that allows two humans to play tictactoe.
